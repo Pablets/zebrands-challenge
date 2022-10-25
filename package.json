@@ -5,13 +5,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cypress:open": "cypress open",
+    "cypress:open": "start-server-and-test dev 3000 cypress open",
     "cypress:headless": "cypress run",
-    "test": "jest --watchAll",
+    "test": "jest",
     "test:ci": "jest --ci",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage",
     "test:watch:coverage": "jest --watchAll --coverage",
-    "e2e": "start-server-and-test dev 3000 cypress:open",
-    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
+    "e2e": "start-server-and-test dev http://localhost:3000 cypress:open",
+    "e2e:headless": "start-server-and-test dev http://localhost:3000 cypress:headless"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
