@@ -26,7 +26,6 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "cypress": "^10.10.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.2.0",
     "@testing-library/user-event": "14.2.0",
@@ -36,11 +35,13 @@
     "@types/react": "^18.0.22",
     "@types/react-redux": "^7.1.24",
     "@types/styled-components": "^5.1.26",
+    "cypress": "^10.10.0",
     "eslint": "^8.26.0",
     "eslint-config-next": "^12.3.1",
     "eslint-plugin-testing-library": "^5.9.1",
     "jest": "28.1.0",
     "jest-environment-jsdom": "28.1.0",
+    "start-server-and-test": "^1.14.0",
     "typescript": "4.6.4"
   },
   "msw": {
