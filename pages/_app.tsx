@@ -4,6 +4,7 @@ import Layout from '../src/layout/Layout';
 import { Provider } from 'react-redux';
 import 'materialize-css/dist/css/materialize.min.css';
 import { store } from '../src/redux/store';
+import '../styles/globals.css';
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
 	require('../src/mocks');
@@ -12,11 +13,11 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	return (
 		<Fragment>
-			{/* <Provider store={store}> */}
-			<Layout>
-				<Component {...pageProps} />
-			</Layout>
-			{/* </Provider> */}
+			<Provider store={store}>
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
+			</Provider>
 		</Fragment>
 	);
 };

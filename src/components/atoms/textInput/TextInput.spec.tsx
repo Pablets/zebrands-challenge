@@ -10,7 +10,7 @@ describe('Flex container', () => {
         const debouncedChangeHandler = jest.fn((value: string) => ({}));
         const onChangeCallback = jest.fn((value: string) => ({}));
 
-        const textInput = render(
+        const view = render(
             <TextInput
                 debouncedChangeHandler={debouncedChangeHandler}
                 onChangeCallback={onChangeCallback}
@@ -19,7 +19,7 @@ describe('Flex container', () => {
         );
 
         // ASSERT
-        expect(textInput.queryByPlaceholderText('Search 🔍')).toBeInTheDocument();
+        expect(view.getByPlaceholderText('Search 🔍')).toBeInTheDocument();
     });
 
     test(`Should pass values to the debouncedChangeHandler callback on user input `, async () => {
@@ -29,7 +29,7 @@ describe('Flex container', () => {
 
         const input = 'som';
 
-        const textInput = render(
+        const view = render(
             <TextInput
                 debouncedChangeHandler={debouncedChangeHandler}
                 onChangeCallback={onChangeCallback}
@@ -38,7 +38,7 @@ describe('Flex container', () => {
         );
 
         // ACT
-        await userEvent.click(textInput.getByPlaceholderText('Search 🔍'));
+        await userEvent.click(view.getByPlaceholderText('Search 🔍'));
         await userEvent.keyboard(input);
 
         // ASSERT
@@ -58,7 +58,7 @@ describe('Flex container', () => {
 
         const input = 'som';
 
-        const textInput = render(
+        const view = render(
             <>
                 <TextInput
                     debouncedChangeHandler={debouncedChangeHandler}
@@ -70,14 +70,14 @@ describe('Flex container', () => {
         );
 
         // ACT
-        await userEvent.click(textInput.getByPlaceholderText('Search 🔍'));
+        await userEvent.click(view.getByPlaceholderText('Search 🔍'));
         await userEvent.keyboard(input);
 
         // ASSERT
-        expect(textInput.getByDisplayValue(input)).toBeInTheDocument();
+        expect(view.getByDisplayValue(input)).toBeInTheDocument();
 
-        await userEvent.click(textInput.getByText(/Another Component/i));
+        await userEvent.click(view.getByText(/Another Component/i));
 
-        expect(textInput.queryByText(input)).not.toBeInTheDocument();
+        expect(view.queryByText(input)).not.toBeInTheDocument();
     });
 });

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
-const Collection = ({ children }) => {
-    return <ul className="collection">{children}</ul>;
+const Collection: FC<PropsWithChildren<{}>> = ({ children }) => {
+	return <ul className="collection">{children}</ul>;
 };
 
 export default Collection;

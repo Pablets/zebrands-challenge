@@ -4,8 +4,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "lint": "next lint",
+    "cypress:open": "cypress open",
+    "cypress:headless": "cypress run",
+    "test": "jest --watchAll",
+    "test:ci": "jest --ci",
+    "test:watch:coverage": "jest --watchAll --coverage",
+    "e2e": "start-server-and-test dev 3000 cypress:open",
+    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
@@ -31,6 +37,7 @@
     "@types/styled-components": "^5.1.26",
     "eslint": "^8.26.0",
     "eslint-config-next": "^12.3.1",
+    "eslint-plugin-testing-library": "^5.9.1",
     "jest": "28.1.0",
     "jest-environment-jsdom": "28.1.0",
     "typescript": "4.6.4"

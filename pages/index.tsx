@@ -1,24 +1,73 @@
-import React, { Fragment } from 'react';
-import type { AppProps } from 'next/app';
-import Layout from '../src/layout/Layout';
-import { Provider } from 'react-redux';
-import 'materialize-css/dist/css/materialize.min.css';
-import { store } from '../src/redux/store';
+import React, { useState, useEffect } from 'react';
+import { searchRepos, searchUsers } from '../src/services/githubService';
+import { GetStaticProps, NextPage } from 'next';
+import Heading from '../src/components/atoms/heading/Heading';
+import SearchResultsTabs from '../src/components/organisms/searchResultsTabs/SearchResultsTabs';
+import { useAppSelector } from '../src/hooks/hooks';
+import { IUserData } from '../src/interfaces/searchUsers';
+import { IRepoData } from '../src/interfaces/searchRepos';
+import repositoriesResponse from '../src/mocks/github-services/repositoriesResponse.json';
+import usersResponse from '../src/mocks//github-services/usersResponse.json';
 
-if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
-	require('../src/mocks');
+interface SSRProps {
+    SSRreposData: IRepoData[];
+    SSRusersData: IUserData[];
+    SSRSearchString: string;
 }
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
-	return (
-		<Fragment>
-			<Provider store={store}>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
-			</Provider>
-		</Fragment>
-	);
+const Home: NextPage<SSRProps> = ({ SSRreposData, SSRusersData, SSRSearchString }) => {
+    const { repos, users, searchString } = useAppSelector((state) => state.resultsSlice);
+
+    console.log('NODE_ENV', process.env.NODE_ENV);
+
+    const [lRepos, setLRepos] = useState<IRepoData[]>();
+    const [lUsers, setLUsers] = useState<IUserData[]>();
+    const [lSearchString, setLSearchString] = useState<string>();
+
+    useEffect(() => {
+        setLRepos(repos);
+        setLUsers(users);
+        setLSearchString(searchString || SSRSearchString);
+    }, [repos, users, searchString, SSRSearchString, SSRreposData, SSRusersData]);
+
+    return (
+        <div className="container" style={{ marginTop: '5px' }}>
+            <div className="row">
+                <div className="col s12">
+                    {lSearchString && (
+                        <Heading size={'h5'}>
+                            Searching results for: &quot;{lSearchString || SSRSearchString}&quot;
+                        </Heading>
+                    )}
+                </div>
+            </div>
+            <SearchResultsTabs repos={lRepos || SSRreposData} users={lUsers || SSRusersData} />
+        </div>
+    );
 };
 
-export default MyApp;
+export default Home;
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+    if (!process.env?.GITHUB_CLIENT_SECRET || !process.env?.GITHUB_CLIENT_ID) {
+        const [a, b, c, ...rest] = repositoriesResponse.items;
+        return {
+            props: {
+                SSRreposData: [a, b, c],
+                SSRusersData: usersResponse.items,
+                SSRSearchString: 'react',
+            },
+        };
+    }
+
+    const { data: reposData } = await searchRepos('tom');
+    const { data: usersData } = await searchUsers('tom');
+
+    return {
+        props: {
+            SSRreposData: reposData.items,
+            SSRusersData: usersData.items,
+            SSRSearchString: 'tom',
+        },
+    };
+};
