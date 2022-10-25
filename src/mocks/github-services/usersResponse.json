@@ -1,0 +1,27 @@
+{
+  "total_count": 1,
+  "incomplete_results": false,
+  "items": [
+    {
+      "login": "react",
+      "id": 102812,
+      "node_id": "MDEyOk9yZ2FuaXphdGlvbjEwMjgxMg==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/102812?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/react",
+      "html_url": "https://github.com/react",
+      "followers_url": "https://api.github.com/users/react/followers",
+      "following_url": "https://api.github.com/users/react/following{/other_user}",
+      "gists_url": "https://api.github.com/users/react/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/react/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/react/subscriptions",
+      "organizations_url": "https://api.github.com/users/react/orgs",
+      "repos_url": "https://api.github.com/users/react/repos",
+      "events_url": "https://api.github.com/users/react/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/react/received_events",
+      "type": "Organization",
+      "site_admin": false,
+      "score": 1.0
+    }
+  ]
+}
