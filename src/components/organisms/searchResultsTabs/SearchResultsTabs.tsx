@@ -9,7 +9,7 @@ interface SearchResultsTabsProps {
     users?: IUserData[];
 }
 
-const SearchResultsTabs: FC<SearchResultsTabsProps> = ({ repos, users }) => {
+const SearchResults: FC<SearchResultsTabsProps> = ({ repos, users }) => {
     const [selected, setSelected] = useState<'repos' | 'users'>('repos');
 
     const setSelectedCallback = (value: 'repos' | 'users') => {
@@ -33,4 +33,4 @@ const SearchResultsTabs: FC<SearchResultsTabsProps> = ({ repos, users }) => {
     );
 };
 
-export default SearchResultsTabs;
+export default SearchResults;

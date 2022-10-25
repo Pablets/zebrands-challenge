@@ -4,7 +4,7 @@ import TextInput from '../../atoms/textInput/TextInput';
 import { StyledSearchBox } from './SearchBox.styled';
 
 interface SearchBoxProps {
-	onDebouncedChange: () => void;
+	onDebouncedChange: (value: string) => Promise<void>;
 }
 
 const SearchBox: FC<SearchBoxProps> = ({ onDebouncedChange }) => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { searchRepos, searchUsers } from '../src/services/githubService';
 import { GetStaticProps, NextPage } from 'next';
 import Heading from '../src/components/atoms/heading/Heading';
-import SearchResultsTabs from '../src/components/organisms/searchResultsTabs/SearchResultsTabs';
+import SearchResults from '../src/components/organisms/searchResultsTabs/SearchResultsTabs';
 import { useAppSelector } from '../src/hooks/hooks';
 import { IUserData } from '../src/interfaces/searchUsers';
 import { IRepoData } from '../src/interfaces/searchRepos';
@@ -41,7 +41,7 @@ const Home: NextPage<SSRProps> = ({ SSRreposData, SSRusersData, SSRSearchString 
                     )}
                 </div>
             </div>
-            <SearchResultsTabs repos={lRepos || SSRreposData} users={lUsers || SSRusersData} />
+            <SearchResults repos={lRepos || SSRreposData} users={lUsers || SSRusersData} />
         </div>
     );
 };

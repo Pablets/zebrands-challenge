@@ -7,6 +7,7 @@ Features:
 - Typescript
 - Mocks with SWM
 - E2E testing with cypress
+- Unit testing with jest
 - Redux Toolkit
 - Redux Saga
 - Axios
@@ -15,10 +16,11 @@ Features:
 - Error Handling feature
 - Debounced input submission
 - Styled Components
+- Linter
 
 ## How to run:
 
-node LTS or later supported
+run on node LTS
 
 ```javascript
 npm i
@@ -27,7 +29,7 @@ npm i
 ## Mocks mode
 
 Copy contents of .env.example in .env
-be sure to have mocks enable if you don't have github credentials
+be sure to have mocks enabled if you don't have github credentials
 ```javascript
 NEXT_PUBLIC_API_MOCKING='enabled'
 ```
@@ -40,7 +42,8 @@ You can see three use cases using the navbar:
 - error: Will show error handling feature
 - everythign else: Empty results.
 
-TODO to be production ready (minimal missing features):
+TODO for deployment to production:
+  - CI/CD Pipelines
   - E2E Testing of all critical user flows
   - Single user and repo pages
   - Improve UI
@@ -49,23 +52,5 @@ TODO to be production ready (minimal missing features):
   - Better error handling https://nextjs.org/docs/advanced-features/error-handling
   - Internationalization
   - Accesibility
-  - More consistent linter and formating
   - Add Incremental Static Regeneration strategies
   - SEO optimization
-
-
-
-
-File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
---------------------|---------|----------|---------|---------|-------------------
-All files           |     100 |      100 |     100 |     100 |
- flexContainer      |     100 |      100 |     100 |     100 |
-  FlexContainer.tsx |     100 |      100 |     100 |     100 |
- heading            |     100 |      100 |     100 |     100 |
-  Heading.tsx       |     100 |      100 |     100 |     100 |
- paragraph          |     100 |      100 |     100 |     100 |
-  Paragraph.tsx     |     100 |      100 |     100 |     100 |
- tabButton          |     100 |      100 |     100 |     100 |
-  TabButton.tsx     |     100 |      100 |     100 |     100 |
- textInput          |     100 |      100 |     100 |     100 |
-  TextInput.tsx     |     100 |      100 |     100 |     100 |
