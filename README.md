@@ -23,24 +23,39 @@ Features:
 run on node LTS
 
 ```javascript
-npm i
+npm i or yarn
+
+npm run dev or yarn dev
 ```
 
-## Mocks mode
+## Env variables
 
-Copy contents of .env.example in .env
+Copy contents of .env.local.example in .env.local
 be sure to have mocks enabled if you don't have github credentials
 ```javascript
 NEXT_PUBLIC_API_MOCKING='enabled'
 ```
 
-## With mocks:
+## Secrets
 
-You can see three use cases using the navbar:
+Also you can provide your own github credentials for a better experience
+```javascript
+GITHUB_CLIENT_SECRET=your github api secret
+GITHUB_CLIENT_ID=your github username
+```
 
-- react: Will get react related search results
-- error: Will show error handling feature
-- everythign else: Empty results.
+## Mocks with MSW:
+
+Mocks are enabled by default if no secrets are provided. The app is limited in only three use cases when using with mocks, to avoid unexpected behaviours during test:
+
+
+Search string       | Result                                |
+--------------------|---------------------------------------|
+react               | Will get react related search results |
+error               | Will show an error                    |
+(any other string)  | Empty results.                        |
+
+***MSW has some limitations in server environments so it is implemented only at run time.***
 
 TODO for deployment to production:
   - CI/CD Pipelines
