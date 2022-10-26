@@ -9,6 +9,7 @@ import {
 	StyledImageContainer,
 } from '../repository/Repository.styled';
 import TextLink from '../../molecules/textLink/TextLink';
+import { Grid, Box, Avatar, Typography } from '@mui/material';
 
 interface UserProps {
 	user: IUserData;
@@ -16,46 +17,62 @@ interface UserProps {
 
 const User: FC<UserProps> = ({ user }) => {
 	return (
-		<CollectionItem>
-			<StyledImageContainer className="col s2">
-				<FlexContainer
-					direction="row"
-					alignItems="center"
-					justifyContent="center"
-					height="50px"
-				>
-					<Image
-						src={`${user.avatar_url}`}
-						alt=""
-						className="circle responsive-img"
-						width={50}
-						height={50}
-					/>
-				</FlexContainer>
-			</StyledImageContainer>
-			<StyledContentContainer className="col s10">
-				<FlexContainer
-					direction="row"
-					alignItems="center"
-					justifyContent="flex-start"
-					height="50px"
-					customStyles={{
-						// display: '-webkit-box',
-						marginLeft: '10px',
-						WebkitLineClamp: 2,
-						WebkitBoxOrient: 'vertical',
-						overflow: 'hidden',
-						textOverflow: 'ellipsis',
-					}}
-				>
-					<TextLink
-						to={`https://github.com/${user.login}`} /* as={`/repo/${user.id}` */
-					>
-						<Heading size={'h4'}>{user.login}</Heading>
-					</TextLink>
-				</FlexContainer>
-			</StyledContentContainer>
-		</CollectionItem>
+		<Grid item xs={4} sm={4} md={4}>
+			<Box
+				display="flex"
+				flexDirection="column"
+				sx={{
+					border: 1,
+					borderColor: 'divider',
+					borderRadius: '5px',
+					marginBottom: '10px',
+					padding: '1rem',
+					height: '100%',
+					flexWrap: 'wrap',
+					justifyContent: 'space-between',
+				}}
+			>
+				<Box>
+					<Box display={'flex'} alignItems={'center'} flexDirection="row">
+						<Avatar
+							alt={user.login}
+							src={`${user.avatar_url}`}
+							sx={{ height: '60px', width: '60px' }}
+						/>
+						<Box
+							display={'flex'}
+							flexDirection="column"
+							justifyContent="center"
+							sx={{
+								ml: '1rem',
+								mb: '1rem',
+							}}
+						>
+							<Box sx={{ textOverflow: 'ellipsis', overflow: 'hidden' }}>
+								<TextLink
+									to={`https://github.com/${user.login}`} /* href="/repo/[id]" as={`/repo/${user.id}`} */
+								>
+									<Typography typography={'h5'} sx={{ lineBreak: 'anywhere' }}>
+										{user.login}
+									</Typography>
+								</TextLink>
+							</Box>
+							<Box
+								sx={{
+									display: '-webkit-box',
+									WebkitLineClamp: 3,
+									WebkitBoxOrient: 'vertical',
+									overflow: 'hidden',
+									textOverflow: 'ellipsis',
+								}}
+							>
+								<Typography>{user.type}</Typography>
+							</Box>
+						</Box>
+					</Box>
+				</Box>
+			</Box>
+		</Grid>
 	);
 };
 

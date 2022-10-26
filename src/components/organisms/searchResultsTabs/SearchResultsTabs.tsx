@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Repository from '../repository/Repository';
 import User from '../user/User';
 import Grid from '@mui/material/Grid';
+import { Container } from '@mui/material';
 
 interface SearchResultsTabsProps {
 	repos: IRepoData[];
@@ -60,14 +61,16 @@ const SearchResultTabs: React.FC<SearchResultsTabsProps> = ({
 	return (
 		<Box sx={{ width: '100%' }}>
 			<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-				<Tabs
-					value={value}
-					onChange={handleChange}
-					aria-label="basic tabs example"
-				>
-					<Tab label="Repositories" {...a11yProps(0)} />
-					<Tab label="Users" {...a11yProps(1)} />
-				</Tabs>
+				<Container>
+					<Tabs
+						value={value}
+						onChange={handleChange}
+						aria-label="basic tabs example"
+					>
+						<Tab label="Repositories" {...a11yProps(0)} />
+						<Tab label="Users" {...a11yProps(1)} />
+					</Tabs>
+				</Container>
 			</Box>
 
 			<TabPanel value={value} index={0}>

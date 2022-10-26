@@ -8,6 +8,8 @@ import SearchBox from '../components/molecules/searchBox/SearchBox';
 import TextLink from '../components/molecules/textLink/TextLink';
 import { useAppDispatch } from '../hooks/hooks';
 import { setSearchString } from '../redux/slices/results/resultsSlice';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 const Navbar = () => {
 	const dispatch = useAppDispatch();
@@ -28,23 +30,29 @@ const Navbar = () => {
 	return (
 		<AppBar position="static">
 			<Container>
-				<Box display="flex" justifyContent="space-between" alignItems="center">
+				<Grid
+					container
+					display="flex"
+					justifyContent="space-between"
+					alignItems="center"
+				>
+					<Grid item xs={12} sm={6} height="50px">
+						<FlexContainer justifyContent="flex-start">
+							<Box display="block" width="fit-content">
+								<TextLink to="/">
+									<Typography typography="h3">Zebrands</Typography>
+								</TextLink>
+							</Box>
+						</FlexContainer>
+					</Grid>
 					<Box>
-						<TextLink to="/">
-							<FlexContainer
-								alignItems="center"
-								justifyContent="flex-start"
-								direction="row"
-								height="60px"
-							>
-								<Heading size="h4">Zebrands</Heading>
+						<Grid item xs={12} sm={6} height="50px">
+							<FlexContainer>
+								<SearchBox onDebouncedChange={debouncedSubmit} />
 							</FlexContainer>
-						</TextLink>
+						</Grid>
 					</Box>
-					<div className="col s12 m6">
-						<SearchBox onDebouncedChange={debouncedSubmit} />
-					</div>
-				</Box>
+				</Grid>
 			</Container>
 		</AppBar>
 	);
