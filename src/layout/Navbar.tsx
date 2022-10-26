@@ -1,3 +1,6 @@
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import React, { Fragment, useState, useEffect } from 'react';
 import FlexContainer from '../components/atoms/flexContainer/FlexContainer';
 import Heading from '../components/atoms/heading/Heading';
@@ -23,29 +26,27 @@ const Navbar = () => {
 	}, [dispatch, sString]);
 
 	return (
-		<Fragment>
-			<nav className="navbar red lighten-2">
-				<div className="nav-wrapper container">
-					<div className="row">
-						<div className="col s12 m6">
-							<TextLink to="/">
-								<FlexContainer
-									alignItems="center"
-									justifyContent="flex-start"
-									direction="row"
-									height="60px"
-								>
-									<Heading size="h4">Zebrands</Heading>
-								</FlexContainer>
-							</TextLink>
-						</div>
-						<div className="col s12 m6">
-							<SearchBox onDebouncedChange={debouncedSubmit} />
-						</div>
+		<AppBar position="static">
+			<Container>
+				<Box display="flex" justifyContent="space-between" alignItems="center">
+					<Box>
+						<TextLink to="/">
+							<FlexContainer
+								alignItems="center"
+								justifyContent="flex-start"
+								direction="row"
+								height="60px"
+							>
+								<Heading size="h4">Zebrands</Heading>
+							</FlexContainer>
+						</TextLink>
+					</Box>
+					<div className="col s12 m6">
+						<SearchBox onDebouncedChange={debouncedSubmit} />
 					</div>
-				</div>
-			</nav>
-		</Fragment>
+				</Box>
+			</Container>
+		</AppBar>
 	);
 };
 

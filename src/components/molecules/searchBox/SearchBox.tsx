@@ -20,18 +20,18 @@ const SearchBox: FC<SearchBoxProps> = ({ onDebouncedChange }) => {
 	);
 
 	return (
-		<StyledSearchBox>
-			<TextInput
-				debouncedChangeHandler={debouncedChangeHandler}
-				onChangeCallback={onChangeHandler}
-				inputCustomStyles={{
-					backgroundColor: 'white',
-					paddingInline: '20px',
-					boxSizing: 'border-box',
-					borderRadius: '25px',
-				}}
-			/>
-		</StyledSearchBox>
+		<TextInput
+			debouncedChangeHandler={debouncedChangeHandler}
+			onChangeCallback={onChangeHandler}
+			inputCustomStyles={{
+				// backgroundColor: 'white',
+				paddingInline: '20px',
+				boxSizing: 'border-box',
+				borderRadius: '25px',
+				borderWidth: '.5px',
+				fontSize: '20px',
+			}}
+		/>
 	);
 };
 

@@ -16,8 +16,11 @@
     "e2e:headless": "start-server-and-test dev http://localhost:3000 cypress:headless"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.11",
     "@reduxjs/toolkit": "^1.8.6",
-    "materialize-css": "^1.0.0",
     "msw": "0.47.3",
     "next": "latest",
     "react": "^18.1.0",
@@ -32,7 +35,6 @@
     "@testing-library/react": "13.2.0",
     "@testing-library/user-event": "14.2.0",
     "@types/axios": "^0.14.0",
-    "@types/materialize-css": "^1.0.11",
     "@types/node": "^18.11.5",
     "@types/react": "^18.0.22",
     "@types/react-redux": "^7.1.24",

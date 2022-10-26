@@ -3,6 +3,7 @@ import React, { FC, Fragment, PropsWithChildren, useEffect } from 'react';
 import { useAppSelector } from '../hooks/hooks';
 import FlexContainer from '../components/atoms/flexContainer/FlexContainer';
 import Navbar from './Navbar';
+import { Box } from '@mui/material';
 
 const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
 	const router = useRouter();
@@ -15,9 +16,10 @@ const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
 
 	return (
 		<Fragment>
-			{!error && <Navbar />}
+			{/* {!error && <Navbar />} */}
+			<Navbar />
 			{pending && (
-				<>
+				<Box>
 					<FlexContainer
 						direction="row"
 						alignItems="center"
@@ -41,22 +43,8 @@ const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
 							zIndex: 450,
 							maxHeight: '100vh',
 						}}
-					>
-						<div className="preloader-wrapper big active">
-							<div className="spinner-layer spinner-blue-only">
-								<div className="circle-clipper left">
-									<div className="circle"></div>
-								</div>
-								<div className="gap-patch">
-									<div className="circle"></div>
-								</div>
-								<div className="circle-clipper right">
-									<div className="circle"></div>
-								</div>
-							</div>
-						</div>
-					</FlexContainer>
-				</>
+					></FlexContainer>
+				</Box>
 			)}
 			{children}
 		</Fragment>

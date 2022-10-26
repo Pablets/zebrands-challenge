@@ -1,18 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import { resultsSlice } from './slices/index';
+import { resultsSlice, uiSlice } from './slices/index';
 import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from './sagas';
 
-const rootReducer = combineReducers({ resultsSlice: resultsSlice.reducer });
+const rootReducer = combineReducers({
+	resultsSlice: resultsSlice.reducer,
+	uiSlice: uiSlice.reducer,
+});
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-    reducer: rootReducer,
-    middleware: [sagaMiddleware],
+	reducer: rootReducer,
+	middleware: [sagaMiddleware],
 });
 
 sagaMiddleware.run(rootSaga);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export const resultsSelector = () => store.getState().resultsSlice;
+export const uiSelector = () => store.getState().uiSlice;
