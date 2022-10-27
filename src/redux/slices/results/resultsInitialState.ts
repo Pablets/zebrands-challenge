@@ -1,7 +1,7 @@
 import { IRepoData } from '../../../interfaces/searchRepos';
 import { IUserData } from '../../../interfaces/searchUsers';
 
-interface IResults {
+export interface IResults {
 	pending: boolean;
 	searchString?: string;
 	repos?: IRepoData[];

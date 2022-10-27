@@ -1,11 +1,13 @@
 import { CssBaseline, GlobalStyles, ThemeProvider } from '@mui/material';
 import React, { FC, PropsWithChildren } from 'react';
 import { lightTheme, darkTheme } from '../../themes';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { uiSelector } from 'src/redux/store';
+import { useAppSelector } from '../../hooks/hooks';
+import { IUi } from 'src/redux/slices/ui/uiInitialState';
 
 const CustomThemeProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
-	const { currentTheme } = uiSelector();
+	const { currentTheme } = useAppSelector(
+		(state: { uiSlice: IUi }) => state.uiSlice
+	);
 
 	return (
 		<ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>

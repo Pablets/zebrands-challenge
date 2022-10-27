@@ -16,15 +16,4 @@ export const uiSlice = createSlice({
 	},
 });
 
-export const {
-	fetchingResults,
-	setRepos,
-	setUsers,
-	resetResultsStore,
-	setResultsError,
-	resetSearchString,
-	setSearchString,
-	resetError,
-} = resultsSlice.actions;
-
-
+export const { setTheme } = uiSlice.actions;

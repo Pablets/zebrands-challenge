@@ -10,6 +10,7 @@ import { useAppDispatch } from '../hooks/hooks';
 import { setSearchString } from '../redux/slices/results/resultsSlice';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import ThemeSwitcher from 'src/components/atoms/themeSwitcher/ThemeSwitcher';
 
 const Navbar = () => {
 	const dispatch = useAppDispatch();
@@ -36,7 +37,7 @@ const Navbar = () => {
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<Grid item xs={12} sm={6} height="50px">
+					<Grid item xs={12} sm={4} height="50px">
 						<FlexContainer justifyContent="flex-start">
 							<Box display="block" width="fit-content">
 								<TextLink to="/">
@@ -45,13 +46,16 @@ const Navbar = () => {
 							</Box>
 						</FlexContainer>
 					</Grid>
-					<Box>
-						<Grid item xs={12} sm={6} height="50px">
-							<FlexContainer>
-								<SearchBox onDebouncedChange={debouncedSubmit} />
-							</FlexContainer>
-						</Grid>
-					</Box>
+					<Grid item xs={12} sm={7} height="50px">
+						<FlexContainer>
+							<SearchBox onDebouncedChange={debouncedSubmit} />
+						</FlexContainer>
+					</Grid>
+					<Grid item xs={12} sm={1} height="50px">
+						<FlexContainer>
+							<ThemeSwitcher />
+						</FlexContainer>
+					</Grid>
 				</Grid>
 			</Container>
 		</AppBar>

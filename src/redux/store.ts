@@ -19,6 +19,3 @@ sagaMiddleware.run(rootSaga);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
-export const resultsSelector = () => store.getState().resultsSlice;
-export const uiSelector = () => store.getState().uiSlice;

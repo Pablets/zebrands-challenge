@@ -1,7 +1,7 @@
-interface IResults {
-	currentTheme: string;
+export interface IUi {
+	currentTheme: 'light' | 'dark';
 }
 
-export const uiInitialState: IResults = {
+export const uiInitialState: IUi = {
 	currentTheme: 'light',
 };
